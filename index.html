@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tabajara Calculator</title>
+  </head>
+  <body>
+    <h1>Bem vindo ao Tabajara Calculator</h1>
+    <div class="wrapper">
+      <div class="soData">
+        <div class="liqData">
+          <label for="input">Valor desejado</label>
+          <input type="number" id="soLiq" />
+        </div>
+        <div class="horasData">
+          <label for="input">Horas de atendimento</label>
+          <input type="number" id="soHoras" />
+        </div>
+      </div>
+
+      <div class="tatiData">
+        <div class="liqData">
+          <label for="input">Valor desejado</label>
+          <input type="number" id="tatiLiq" />
+        </div>
+        <div class="horasData">
+          <label for="input">Horas de atendimento</label>
+          <input type="number" id="tatiHoras" />
+        </div>
+      </div>
+
+      <div class="josiData">
+        <div class="liqData">
+          <label for="input">Valor desejado</label>
+          <input type="number" id="josiLiq" />
+        </div>
+        <div class="horasData">
+          <label for="input">Horas de atendimento</label>
+          <input type="number" id="josiHoras" />
+        </div>
+      </div>
+    </div>
+    <div class="gastos">
+      <div class="gasto">
+        <label for="input">Despesa adicional</label>
+        <input type="number" id="gasto1" />
+      </div>
+      <div class="gasto">
+        <label for="input">Despesa adicional</label>
+        <input type="number" id="gasto2" />
+      </div>
+      <div class="gasto">
+        <label for="input">Despesa adicional</label>
+        <input type="number" id="gasto3" />
+      </div>
+    </div>
+    <div class="resultados">
+      <div class="resultado">
+        <label for="input">Total de gastos: </label>
+        <span id="totalGastos"></span>
+      </div>
+      <div class="resultado">
+        <label for="input">Total da nota: </label>
+        <span id="totalNota"></span>
+      </div>
+      <div class="resultado">
+        <label for="input">Lucro ou Prejuízo: </label>
+        <span id="reslucroPreju"></span>
+      </div>
+    </div>
+    <button type="submit" onclick="calcEfetiva()">CALCULA</button>
+    <button type="submit" id="botao" onClick="window.location.reload()">
+      LIMPA
+    </button>
+    <script src="./src/script.js"></script>
+  </body>
+</html>

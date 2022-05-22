@@ -1,0 +1,30 @@
+{
+  "name": "tabajara-calculator",
+  "version": "1.0.0",
+  "description": "the best calculator ever made",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "tabajara-calculator",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "uninstallDisplayName": "tabajara-desinstalator",
+      "license": "license.md",
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "author": "Alberto Araujo",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.2.4",
+    "electron-builder": "^23.0.3"
+  }
+}
