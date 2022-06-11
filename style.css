@@ -8,19 +8,10 @@
 :root {
   font-size: 62.5%; /* 1rem = 10px */
 
-  --hue: 290; /*fator da cor*/
+  --hue: 180; /*fator da cor*/
   --primary-color: hsl(var(--hue), 100%, 26%);
-  --headline: hsl(210, 11%, 15%);
-  --paragraph: hsl(210, 9%, 31%);
-
-  --brand-beige: hsl(39, 100%, 97%);
   --brand-light: hsl(calc(var(--hue) - 22), 23%, 89%);
-  --brand-light2: hsl(148, 23%, 89%);
   --brand-dark: hsl(var(--hue), 100%, 14%);
-
-  --bg-light: hsl(180, 14%, 97%);
-
-  --nav-height: 7.2rem;
 }
 
 html {
@@ -34,23 +25,59 @@ body {
 }
 
 body {
-  font-family: 'DM Sans';
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
 
   text-align: center;
 
   overflow: overlay;
 
-  background-color: var(--bg-light);
+  background-color: var(--brand-light);
 }
 
-/* .wrapper {
-  width: 37.5rem;
-  margin-inline: auto;
-  padding-inline: 2.4rem;
-} */
 h1 {
   padding: 2rem;
+}
+
+input {
+  border-color: var(--primary-color);
+  border-radius: 20px;
+  text-align: center;
+  background-color: var(--brand-light);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.button {
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2.4rem;
+
+  border: none;
+  border-radius: 4rem;
+
+  background-color: var(--primary-color);
+  color: white;
+
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--brand-dark);
+  border: none;
+  color: white;
 }
 
 .wrapper {
@@ -61,18 +88,86 @@ h1 {
   display: flex;
 }
 
-.resultado {
+.resultados {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.resultado,
+.resultadoLucroPreju {
   display: flex;
   padding: 1rem;
   margin-inline: auto;
 }
 
-.resultado span {
+.resultadoLucroPreju.show {
+  visibility: visible;
+}
+
+.resultadoLucroPreju.hide {
+  display: none;
+}
+
+.resultadoLucroPreju .resultado span {
   margin-left: 1rem;
 }
 
-.resultados {
+.imposto {
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.imposto input {
+  margin-left: 1rem;
+}
+
+.buttons {
   display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.valorNotaFixo {
+  display: flex;
+  visibility: visible;
+  /* visibility: hidden; */
+  margin-inline: auto;
+  margin-block: 2rem;
   align-items: center;
-  padding: 1rem;
+  align-content: center;
+}
+.valorNotaFixo input {
+  margin-left: 1rem;
+}
+.valorNotaFixo button {
+  height: 4rem;
+  width: 4rem;
+  border: none;
+  background-color: var(--brand-light);
+  cursor: pointer;
+}
+
+.valorNotaFixo button path {
+  stroke: var(--primary-color);
+}
+
+.valorNotaFixo button:hover path {
+  stroke: var(--brand-dark);
+}
+
+.valorNotaFixo.show {
+  visibility: visible;
+}
+
+.valorNotaFixo.hide {
+  visibility: hidden;
+}
+
+/* footer {
+  margin-top: 3%;
+} */
+
+.heart-footer {
+  font-size: 3rem;
 }

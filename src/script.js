@@ -15,19 +15,29 @@ let josiLiquido = 0
 let josiHoras = 0
 let tatiLiquido = 0
 let tatiHoras = 0
+let valorFixoNota = 0
+let imposto = 0
+let inputs = document.querySelectorAll('input')
 
-// document.querySelector('#botao').addEventListener('click', () => {
-//   getData()
-// })
+function adicionaNotaFixa() {
+  valorNotaFixo.classList.add('show')
+  valorNotaFixo.classList.remove('hide')
+}
+
+function removeNotaFixa() {
+  valorNotaFixo.classList.add('hide')
+  valorNotaFixo.classList.remove('show')
+  document.querySelector('#valorFixo').value = 0
+}
 
 function calcEfetiva() {
+  verificaCampoVazio()
   pegaValor()
   calcLiquidos()
   calcGasto()
   calcNota()
   calcLiquido()
   totalLucroPreju()
-  mostraResultados()
 }
 
 function pegaValor() {
@@ -40,6 +50,16 @@ function pegaValor() {
   josiHoras = parseInt(document.querySelector('#josiHoras').value)
   tatiLiquido = parseInt(document.querySelector('#tatiLiq').value)
   tatiHoras = parseInt(document.querySelector('#tatiHoras').value)
+  valorFixoNota = parseInt(document.querySelector('#valorFixo').value)
+  imposto = parseInt(document.querySelector('#imposto').value)
+}
+
+function verificaCampoVazio() {
+  inputs.forEach((item) => {
+    if (!item.value) {
+      item.value = 0
+    }
+  })
 }
 
 function calcLiquidos() {
@@ -59,34 +79,59 @@ function calcGasto() {
 }
 
 function calcNota() {
-  totalNota = totalGasto / (1 - 0.205)
+  if (valorFixoNota > 0) {
+    totalNota = valorFixoNota
+  } else {
+    totalNota = totalGasto / (1 - imposto / 100)
+  }
 }
 
 function calcLiquido() {
-  totalLiquido = totalNota - totalNota * (20.5 / 100)
+  totalLiquido = totalNota - totalNota * (imposto / 100)
   return totalLiquido
 }
 
 function totalLucroPreju() {
   let i = totalLiquido - totalGasto
-  if (i >= 0) {
+  if (i > 0) {
+    resLucroPreju.classList.add('show')
+    resLucroPreju.classList.remove('hide')
     lucro = totalLiquido - totalGasto
-    console.log(totalNota, totalLiquido, lucro)
-    document.getElementById('reslucroPreju').innerHTML = lucro.toFixed(2)
-    document.getElementById('totalGastos').innerHTML = totalGasto.toFixed(2)
-    document.getElementById('totalNota').innerHTML = totalNota.toFixed(2)
+    document.getElementById('lucroPreju').innerHTML = 'Lucro: '
+    document.getElementById('reslucroPreju').innerHTML = `${lucro.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalGastos').innerHTML = `${totalGasto.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalNota').innerHTML = `${totalNota.toFixed(
+      2
+    )} R$`
+  } else if (i == 0) {
+    resLucroPreju.classList.add('hide')
+    resLucroPreju.classList.remove('show')
+    document.getElementById('reslucroPreju').innerHTML = `${preju.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalGastos').innerHTML = `${totalGasto.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalNota').innerHTML = `${totalNota.toFixed(
+      2
+    )} R$`
   } else {
+    resLucroPreju.classList.add('show')
+    resLucroPreju.classList.remove('hide')
     preju = totalLiquido - totalGasto
-    console.log(totalLiquido, totalGasto, lucro)
-    document.getElementById('reslucroPreju').innerHTML = preju.toFixed(2)
-    document.getElementById('totalGastos').innerHTML = totalGasto.toFixed(2)
-    document.getElementById('totalNota').innerHTML = totalNota.toFixed(2)
+    document.getElementById('lucroPreju').innerHTML = 'Prejuízo: '
+    document.getElementById('reslucroPreju').innerHTML = `${preju.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalGastos').innerHTML = `${totalGasto.toFixed(
+      2
+    )} R$`
+    document.getElementById('totalNota').innerHTML = `${totalNota.toFixed(
+      2
+    )} R$`
   }
-}
-
-function mostraResultados() {
-  totalGasto
-  preju
-  lucro
-  totalNota
 }

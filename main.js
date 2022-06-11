@@ -4,9 +4,10 @@ let mainWindow
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    width: 700,
-    height: 400,
+    width: 800,
+    height: 550,
     resizable: false,
   })
   mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.removeMenu()
 })
