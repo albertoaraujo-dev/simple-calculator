@@ -1,6 +1,6 @@
 {
-  "name": "tabajara-calculator",
-  "version": "1.0.0",
+  "name": "simple-calculator",
+  "version": "2.0.0",
   "description": "the best calculator ever made",
   "main": "main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "electron-builder"
   },
   "build": {
-    "appId": "tabajara-calculator",
+    "appId": "simple-calculator",
     "win": {
       "target": [
         "nsis"
@@ -16,7 +16,7 @@
     },
     "nsis": {
       "oneClick": false,
-      "uninstallDisplayName": "tabajara-desinstalator",
+      "uninstallDisplayName": "simple-calculator-uninstall",
       "license": "license.md",
       "allowToChangeInstallationDirectory": true
     }
